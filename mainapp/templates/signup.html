@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block title %}
+<title>Essence - Fashion world | Signup </title>
+{% endblock %}
+{% block body %}
+<div class="container-fluid w-100 my-5 p-5">
+    <div class="center w-50 m-auto border p-5">
+        <h5 class="text-center"><span class='text-primary'>Create</span> an Account</h5>
+        {% if messages %}
+            {% for m in messages %}
+            <div class="alert alert-danger text-centre alert-dismissible fade show" role="alert">
+                {{m}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+        {% endif %}
+        <form action="/signup/" method="post">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="fullname" class="form-label">FullName</label>
+                    <input type="text" class="form-control" name='name' id='fullname' placeholder="Enter Full Name:">
+                </div>
+                <div class="col-md-6">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name='username' id='username' placeholder="Enter user name:">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name='email' id='email' placeholder="Enter Email:">
+                </div>
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Mobile No.</label>
+                    <input type="mobile" class="form-control" name='phone' id='mobile' placeholder="Enter Mobile No.:">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name='password' id='password' placeholder="Enter Password:">
+                </div>
+                <div class="col-md-6">
+                    <label for="cpassword" class="form-label">Confirm Password</label>
+                    <input type="cpassword" class="form-control" name='cpassword' id='cpassword' placeholder="Enter Password:">
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary w-100 btn-sm">Signup</button>
+            </div>
+        </form>
+        <a href="/login/" class="text-primary">Already User?Login to Your Account</a>
+    </div>
+</div>
+{% endblock %}
